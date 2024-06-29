@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="assets/css/override-bootstrap.css">
 </head>
 
-<body>
-    <div class="container">
+<body style="background: #EBE4D1;">
+    <div class="container" style="background: #CEE5D0;">
         <header
             class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="col-md-3 mb-2 mb-md-0">
@@ -42,7 +42,7 @@
 
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-                <img src="assets/images/logo.jpg" class="d-block mx-lg-auto img-fluid" alt="logo du site" width="350"
+                <img src="assets/images/logo.jpg" class="d-block mx-lg-auto img-fluid rounded-3 border border-warning" alt="logo du site" width="350"
                     loading="lazy">
             </div>
             <div class="col-lg-6">
@@ -74,7 +74,7 @@
 
         <div class="col-md-4">
             <div class="card">
-                <img src="uploads/recipes/1-chocolate-au-mousse.jpg" class="card-img-top"
+                <img src="uploads/recipes/2-gratin-dauphinois.jpg" class="card-img-top"
                     alt="image de recette au chocolat">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
@@ -87,7 +87,7 @@
 
         <div class="col-md-4">
             <div class="card">
-                <img src="uploads/recipes/1-chocolate-au-mousse.jpg" class="card-img-top"
+                <img src="uploads/recipes/3-salade.jpg" class="card-img-top"
                     alt="image de recette au chocolat">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
@@ -103,28 +103,12 @@
 
 
 
-    <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center">
-                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                    <svg class="bi" width="30" height="24">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                </a>
-                <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Company, Inc</span>
-            </div>
-
-            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
-                            <use xlink:href="#twitter"></use>
-                        </svg></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
-                            <use xlink:href="#instagram"></use>
-                        </svg></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
-                            <use xlink:href="#facebook"></use>
-                        </svg></a></li>
-            </ul>
+                
+    <div class="container mt-5" style="background: #FFC470;">
+        <hr>
+        <footer class="py-3 my-4">
+                    <img src="assets/images/logo2.jpg" alt="logo du site" width="120" height="80" class="rounded-4">
+                <span class="text-center text-body-secondary">© 2024 -_-_Nabucodeoneothers--Company, Inc-- _-_-</span>
         </footer>
     </div>
 
