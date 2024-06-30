@@ -1,5 +1,10 @@
 <?php
    require_once __DIR__. "/../lib/config.php";
+
+   
+   $currentPage = basename($_SERVER['SCRIPT_NAME']);
+
+  
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +31,12 @@
                 </a>
             </div>
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li class="fw-bold"><a href="index.php" class="nav-link px-2 link-secondary">Accueil</a></li>
-                <li class="fw-bold"><a href="recettes.php" class="nav-link px-2">Vos recettes</a></li>
-                <li class="fw-bold"><a href="#" class="nav-link px-2">Pricing</a></li>
-                <li class="fw-bold"><a href="#" class="nav-link px-2">FAQs</a></li>
-                <li class="fw-bold"><a href="a_propos.php" class="nav-link px-2">A-propos</a></li>
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 nav nav-pills">
+                <li class="fw-bold nav-item"><a href="index.php" class="nav-link <?php if ($currentPage === 'index.php') { echo 'active'; } ?>">Accueil</a></li>
+                <li class="fw-bold nav-item"><a href="recettes.php" class="nav-link <?php if ($currentPage === 'recettes.php') { echo 'active'; } ?>">Vos recettes</a></li>
+                <li class="fw-bold nav-item"><a href="#" class="nav-link">Pricing</a></li>
+                <li class="fw-bold nav-item"><a href="#" class="nav-link">FAQs</a></li>
+                <li class="fw-bold nav-item"><a href="a_propos.php" class="nav-link <?php if ($currentPage === 'a_propos.php') { echo 'active'; } ?>">A-propos</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
