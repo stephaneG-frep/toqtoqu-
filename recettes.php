@@ -10,22 +10,20 @@ $recipes = getRecipes($pdo);
 ?>
 
 
+<div class="container col-xxl-8 px-4 py-5">
+    <h1>Toutes les recettes</h1>
 
 
-    <div class="container col-xxl-8 px-4 py-5">
-        <h1>Toutes les recettes</h1>
-
-        
-    </div>
+</div>
 
 
-    <div class="row mx-2">
+<div class="row mx-2">
 
-        <?php foreach($recipes as $key => $recipe) {
+    <?php foreach($recipes as $key => $recipe) {
             include("templates/recipe_partial.php");
         }?>
 
-    </div>
+</div>
 
 
 <?php require_once __DIR__. "/templates/footer.php"; ?>
