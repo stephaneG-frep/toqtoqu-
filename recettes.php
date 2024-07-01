@@ -1,7 +1,10 @@
 <?php 
-require_once __DIR__. "/lib/config.php";
-require_once __DIR__. "/lib/recipe.php";
 require_once __DIR__. "/templates/header.php";
+
+require_once __DIR__. "/lib/recipe.php";
+
+
+$recipes = getRecipes($pdo);
 
 
 ?>
