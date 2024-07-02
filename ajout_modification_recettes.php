@@ -4,6 +4,13 @@ require_once __DIR__. "/lib/recipe.php";
 require_once __DIR__. "/lib/tools.php";
 require_once __DIR__. "/templates/header.php";
 
+if (isset($_POST['saveRecipe'])) {
+   $res = saveRecipe($pdo, $_POST['category'], $_POST['title'], $_POST['description'], $_POST['ingredients'],
+              $_POST['instructions'], NULL, NULL, NULL, NULL);
+    var_dump($res);
+    //$_POST['image'], $_POST['image1'], $_POST['image2'], $_POST['image3']
+}  
+
 ?>
 <div class="container">
     <form action="" method="post" enctype="multipart/form-data">
@@ -38,9 +45,11 @@ require_once __DIR__. "/templates/header.php";
         </div>
 
         <div class="mb-3">
-            <label for="file" class="form-label">Image 1</label>
-            <input type="file" name="file" id="file" class="form-control">
+            <label for="file" class="form-label">Images</label>
+            <input type="file" name="images[ ]" multiple id="file" class="form-control">
+            <p class="form-control">JPG or PNG (MAX. 800x400px) pas plus de 4 images </p>
         </div>
+        <!--
         <div class="mb-3">
             <label for="file1" class="form-label">Image 2</label>
             <input type="file" name="file1" id="file1" class="form-control">
@@ -53,7 +62,8 @@ require_once __DIR__. "/templates/header.php";
             <label for="file3" class="form-label">Image 4</label>
             <input type="file" name="file3" id="file3" class="form-control">
         </div>
-
+        -->
+        
         <input type="submit" value="Enregistrer" name="saveRecipe" class="btn btn-primary">
 
     </form>
