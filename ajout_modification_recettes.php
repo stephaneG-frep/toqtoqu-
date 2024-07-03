@@ -2,17 +2,62 @@
 
 require_once __DIR__. "/lib/recipe.php";
 require_once __DIR__. "/lib/tools.php";
+require_once __DIR__. "/lib/category.php";
 require_once __DIR__. "/templates/header.php";
 
-if (isset($_POST['saveRecipe'])) {
+$errors = [];
+$messages = [];
+
+$categories = getCategories($pdo);
+
+if (isset($_POST['saveRecipe'])) { 
+    $fileName = null;
+  
+    // test si un fichier a été envoyé
+    if (isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
+         $checkImage = getimagesize($_FILES['file']['tmp_name']);
+         if ($checkImage !== false) {
+            // si c'est une image on envoie dans le bon fichier avec prefix unique et slugify
+            $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
+
+            move_uploaded_file($_FILES['file']['tmp_name'], _RECIPES_IMG_PATH_.$fileName);
+
+         } else {
+            // si c'estpas une image (errors)
+            $errors[] = "Erreur il faut une image";
+         }
+    }
+
+    
    $res = saveRecipe($pdo, $_POST['category'], $_POST['title'], $_POST['description'], $_POST['ingredients'],
-              $_POST['instructions'], NULL, NULL, NULL, NULL);
-    var_dump($res);
+              $_POST['instructions'], $fileName);
     //$_POST['image'], $_POST['image1'], $_POST['image2'], $_POST['image3']
+    if ($res) {
+       $messages[] = "Votre recette est bien enregistée";
+    } else {
+       $errors[] = "Votre recette n'a pas été enregistrée";
+    }
+       
 }  
 
 ?>
+
 <div class="container">
+    <?php foreach($messages as $message) {?>
+    <div class="alert alert-success">
+        <?= $message;?>
+    </div>
+    <?php }?>
+
+
+    <?php foreach($errors as $error) {?>
+    <div class="alert alert-danger">
+        <?= $error;?>
+    </div>
+    <?php }?>
+
+
+    <h1>Ajouter ou modifi... une recette</h1>
     <form action="" method="post" enctype="multipart/form-data">
 
         <div class="mb-3">
@@ -38,15 +83,22 @@ if (isset($_POST['saveRecipe'])) {
         <div class="mb-3">
             <label for="category" class="form-label">Categories</label>
             <select name="category" id="category" class="form-select">
-                <option value="1">Entrée</option>
-                <option value="2">PLat</option>
-                <option value="3">Déssert</option>
+                <?php foreach($categories as $categorie) {?>
+                <option value="<?= $categorie['id'];?>"><?= $categorie['name'];?></option>
+                <?php }?>
             </select>
         </div>
 
         <div class="mb-3">
             <label for="file" class="form-label">Images</label>
-            <input type="file" name="images[ ]" multiple id="file" class="form-control">
+            <input type="file" name="file" id="file" class="form-control mb-2">
+            <input type="file" name="file2" id="file2" class="form-control mb-2">
+            <input type="file" name="file3" id="file3" class="form-control mb-2">
+            <input type="file" name="file4" id="file4" class="form-control mb-2">
+
+
+
+
             <p class="form-control">JPG or PNG (MAX. 800x400px) pas plus de 4 images </p>
         </div>
         <!--
@@ -63,7 +115,7 @@ if (isset($_POST['saveRecipe'])) {
             <input type="file" name="file3" id="file3" class="form-control">
         </div>
         -->
-        
+
         <input type="submit" value="Enregistrer" name="saveRecipe" class="btn btn-primary">
 
     </form>
