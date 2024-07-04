@@ -36,7 +36,7 @@ if (isset($_POST['saveRecipe'])) {
 
     if (!$errors) {
 
-        $res = saveRecipe($pdo, $_POST['category'], $_POST['title'], $_POST['description'], $_POST['ingredients'],
+        $res = saveRecipe($pdo, $_POST['category'], htmlentities($_POST['title']), htmlentities($_POST['description']), htmlentities($_POST['ingredients']),
               $_POST['instructions'], $fileName);
         //$_POST['image'], $_POST['image1'], $_POST['image2'], $_POST['image3']
         if ($res) {
