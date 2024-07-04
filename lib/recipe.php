@@ -48,4 +48,5 @@ function saveRecipe(PDO $pdo, int $category, string $title, string $description,
   $query->bindParam(':instructions', $instructions, PDO::PARAM_STR);
   $query->bindParam(':image', $image, PDO::PARAM_STR);
   return $query->execute();
+  
 }
