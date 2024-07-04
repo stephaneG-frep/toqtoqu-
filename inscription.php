@@ -8,7 +8,14 @@
     
 
     if (isset($_POST['addUser'])) {
+        
+        $res = addUser($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
 
+        if ($res) {
+            $messages[] = "Inscription réussie";
+        } else {
+            $errors[] = "Désolé l'inscription n'a pas réussie";
+        }
         
     }
     
@@ -52,7 +59,7 @@
             <label for="password" class="form-label">Votre mot-de-passe : </label>
             <input type="password" name="password" id="password" class="form-control">
         </div>
-        <input type="submit" value="Enregisté" name="addUser" class="btn btn-primary">
+        <input type="submit" value="Enregister" name="addUser" class="btn btn-primary">
 
     </form>
 </div>

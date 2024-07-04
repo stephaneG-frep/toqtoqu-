@@ -1,10 +1,15 @@
 <?php
+   require_once __DIR__. "/../lib/session.php";
    require_once __DIR__. "/../lib/pdo.php";
    require_once __DIR__. "/../lib/config.php";
+   require_once __DIR__. "/../lib/user.php";
 
-   
+ 
    $currentPage = basename($_SERVER['SCRIPT_NAME']);
 
+
+   
+       
   
 ?>
 
@@ -34,13 +39,19 @@
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 nav nav-pills">
                 <?php foreach ($mainMenu as $key => $value) {?>
-                    <li class="fw-bold nav-item"><a href="<?=$key; ?>" class="nav-link <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$value; ?></a></li>
-                 <?php }?>   
+                <li class="fw-bold nav-item"><a href="<?=$key; ?>"
+                        class="nav-link <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$value; ?></a></li>
+                <?php }?>
             </ul>
 
             <div class="col-md-3 text-end">
-                <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
+                <?php if (isset($_SESSION['user'])) {?>
+                <a href="logout.php" class="btn btn-outline-primary me-2">Déconnexion</a>
+                
+                <?php } else { ?>
+                <a href="login.php" class="btn btn-outline-primary me-2">Conexion</a>
                 <a href="inscription.php" class="btn btn-primary">Inscription</a>
+                <?php }?>
             </div>
         </header>
     </div>

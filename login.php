@@ -1,5 +1,6 @@
 <?php
     require_once __DIR__. "/templates/header.php";
+    require_once __DIR__. "/lib/user.php";
 
     $errors = [];
     $messages = [];
@@ -8,17 +9,14 @@
 
     if (isset($_POST['loginUser'])) {
 
-        $query = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-        $query->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
-        $query->execute();
-        $user = $query->fetch();
-
-            if($user && $user['password'] === $_POST['password']) {
-                $messages[] = " Connexion OK ";
-            } else {
-                $errors[] ="Introuvable";
-            }
-        }
+        $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
+         if ($user) {
+           $_SESSION['user'] = ['email' => $user['email']];
+           header('location: index.php');
+         } else {
+            $errors[] = " Une erreur est survenue vérifier vos M-D-P et EMAIL !!";
+         }
+    }
     
 ?>
 

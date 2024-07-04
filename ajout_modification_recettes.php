@@ -5,10 +5,14 @@ require_once __DIR__. "/lib/tools.php";
 require_once __DIR__. "/lib/category.php";
 require_once __DIR__. "/templates/header.php";
 
+if (!isset($_SESSION['user'])) {
+    header('location: login.php');
+}
+
 $errors = [];
 $messages = [];
 $recipe = [
-    'category_id' => '',
+   'category_id' => '',
    'title' => '',
    'description' => '',
    'ingredients' => '',
