@@ -90,12 +90,12 @@ if (isset($_POST['saveRecipe'])) {
         </div>
 
         <div class="mb-3">
-            <label for="ingredients" class="form-label">Déscription</label>
+            <label for="ingredients" class="form-label">Ingrédients</label>
             <textarea name="ingredients" id="ingredients" cols="30" rows="5" class="form-control"><?=$recipe['ingredients'] ?></textarea>
         </div>
 
         <div class="mb-3">
-            <label for="instructions" class="form-label">Déscription</label>
+            <label for="instructions" class="form-label">Instructions</label>
             <textarea name="instructions" id="instructions" cols="30" rows="5" class="form-control"><?=$recipe['instructions'] ?></textarea>
         </div>
 
